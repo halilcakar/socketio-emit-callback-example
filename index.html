@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.I</title>
+  </head>
+  <body>
+    <button data-value="1" class="button">Send true data</button>
+    <button data-value="0" class="button">Send false data</button>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    document.querySelectorAll("button").forEach(function (button) {
+      button.addEventListener("click", function () {
+        socket.emit("event", !!+event.target.dataset.value, function (
+          dataFromServer
+        ) {
+          console.log(dataFromServer);
+        });
+      });
+    });
+  </script>
+</html>
